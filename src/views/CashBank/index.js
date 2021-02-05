@@ -16,6 +16,10 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import Table from "components/Table/Table.js";
+import {
+  Link,
+  useHistory,
+} from "react-router-dom";
 
 import Search from "@material-ui/icons/Search";
 // core components
@@ -68,78 +72,16 @@ const styles = (theme) => ({
 
 const useStyles = makeStyles(styles);
 
-export default function VerificationRekening() {
+export default function CashBank() {
   const classes = useStyles();
-  const [tl, setTL] = React.useState(false);
-  const [tc, setTC] = React.useState(false);
-  const [tr, setTR] = React.useState(false);
-  const [bl, setBL] = React.useState(false);
-  const [bc, setBC] = React.useState(false);
-  const [br, setBR] = React.useState(false);
-  React.useEffect(() => {
-    // Specify how to clean up after this effect:
-    return function cleanup() {
-      // to stop the warning of calling setState of unmounted component
-      var id = window.setTimeout(null, 0);
-      while (id--) {
-        window.clearTimeout(id);
-      }
-    };
-  });
-  const showNotification = place => {
-    switch (place) {
-      case "tl":
-        if (!tl) {
-          setTL(true);
-          setTimeout(function() {
-            setTL(false);
-          }, 6000);
-        }
-        break;
-      case "tc":
-        if (!tc) {
-          setTC(true);
-          setTimeout(function() {
-            setTC(false);
-          }, 6000);
-        }
-        break;
-      case "tr":
-        if (!tr) {
-          setTR(true);
-          setTimeout(function() {
-            setTR(false);
-          }, 6000);
-        }
-        break;
-      case "bl":
-        if (!bl) {
-          setBL(true);
-          setTimeout(function() {
-            setBL(false);
-          }, 6000);
-        }
-        break;
-      case "bc":
-        if (!bc) {
-          setBC(true);
-          setTimeout(function() {
-            setBC(false);
-          }, 6000);
-        }
-        break;
-      case "br":
-        if (!br) {
-          setBR(true);
-          setTimeout(function() {
-            setBR(false);
-          }, 6000);
-        }
-        break;
-      default:
-        break;
-    }
-  };
+  const history = useHistory();
+  
+  const naviagteTo = (pathname) => {
+    history.push({
+      pathname
+    });
+  }
+  
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
@@ -151,29 +93,23 @@ export default function VerificationRekening() {
             </p>
           </CardHeader>
           <CardBody>
-            <GridContainer justify="flex-end">
+            <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={3}>
-                <CustomInput
-                  formControlProps={{
-                    className: classes.margin + " " + classes.search
-                  }}
-                  inputProps={{
-                    placeholder: "Nama",
-                    inputProps: {
-                      "aria-label": "Search"
-                    }
-                  }}
-                />
+                Receivables next 30 days
               </GridItem>
-              <GridItem xs={12} sm={12} md={1}>
-                <Button color="white" aria-label="edit" justIcon round>
-                  <Search />
-                </Button>
+              <GridItem xs={12} sm={12} md={3}>
+                Payables next 30 days
+              </GridItem>
+              <GridItem xs={12} sm={12} md={3}>
+                Cash Balence
+              </GridItem>
+              <GridItem xs={12} sm={12} md={3}>
+                Bank Balence
               </GridItem>
             </GridContainer>
             <Table
               tableHeaderColor="primary"
-              tableHead={["#","Field", "Data", "Confirmation"]}
+              tableHead={["No","Account Code", "Acc Name", "Last Update"]}
               tableData={[
                 ["1","Nama Lengkap", "MAMAN NURAHMAN", "Oud-Turnhout"],
                 ["2","Tanggal Lahir", "29-04-1994", "Sinaai-Waas"],
@@ -189,28 +125,28 @@ export default function VerificationRekening() {
                 <Button
                   fullWidth
                   color="primary"
-                  onClick={() => showNotification("tl")}
+                  onClick={() => naviagteTo('/admin/transferfounds')}
                 >
-                  Continue
+                  Transfer Founds
                 </Button>
               </GridItem>
               <GridItem xs={12} sm={12} md={3}>
                 <Button
                   fullWidth
                   color="danger"
-                  onClick={() => showNotification("tc")}
+                  onClick={() => naviagteTo('/admin/receivemoney')}
                 >
-                  Reset
+                  Receive Money
                 </Button>
-                <Snackbar
-                  place="tc"
-                  color="info"
-                  icon={AddAlert}
-                  message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
-                  open={tc}
-                  closeNotification={() => setTC(false)}
-                  close
-                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={3}>
+                <Button
+                  fullWidth
+                  color="warning"
+                  onClick={() => naviagteTo('/admin/paymoney')}
+                >
+                  Pay Money
+                </Button>
               </GridItem>
             </GridContainer>
           </CardBody>

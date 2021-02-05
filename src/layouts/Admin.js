@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 // creates a beautiful scrollbar
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
@@ -18,7 +18,7 @@ import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/reactlogo.png";
 
-import VerificationRekening from "views/Customer/Verification/verificationRekening.js";
+// import VerificationRekening from "views/Customer/Verification/verificationRekening.js";
 
 let ps;
 
@@ -33,13 +33,21 @@ const switchRoutes = (
             key={key}
           />
         );
+      } else if (prop.layout === "/submenu") {
+        return (
+          <Route
+            path={"/admin" + prop.path}
+            component={prop.component}
+            key={key}
+          />
+        );
       }
       return null;
     })}
-    <Route path="/admin/verification2">
+    {/* <Route path="/admin/verification2">
       <VerificationRekening />
-    </Route>
-    <Redirect from="/admin" to="/admin/dashboard" />
+    </Route> */}
+    {/* <Redirect from="/admin" to="/admin/dashboard" /> */}
   </Switch>
 );
 
