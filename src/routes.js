@@ -66,6 +66,18 @@ import PayMoney from "./views/CashBank/Transaction/PayMoney";
 // import Logout from './views/Logout';
 // import MenuAssets from './views/assets/menuAssets';
 
+/**
+ * 
+ * WAWAN
+ * 
+ */
+import AddCoopraSale from './views/Sales/AddCoopraSale';
+import AddCoopraContract from './views/Sales/AddCoopraContract';
+import AddGoodsSale from './views/Sales/AddGoodsSale';
+import Expenses from './views/Expenses/Expenses';
+import AddContacts from './views/Contacts/AddContacts';
+import CashierTransaction from './views/CashierTransaction';
+
 const dashboardRoutes = [
   {
     path: "/dashboard",
@@ -100,6 +112,48 @@ const dashboardRoutes = [
     name: "Pay Money",
     icon: Person,
     component: PayMoney,
+    layout: "/submenu",
+  },
+  {
+    path: "/add-coopra-sale",
+    name: "Add Coopra Sale",
+    icon: Person,
+    component: AddCoopraSale,
+    layout: "/submenu",
+  },
+  {
+    path: "/add-coopra-contract",
+    name: "Add Coopra Contract",
+    icon: Person,
+    component: AddCoopraContract,
+    layout: "/submenu",
+  },
+  {
+    path: "/add-goods-sale",
+    name: "Add Goods Sale",
+    icon: Person,
+    component: AddGoodsSale,
+    layout: "/submenu",
+  },
+  {
+    path: "/expenses",
+    name: "Expenses",
+    icon: Person,
+    component: Expenses,
+    layout: "/submenu",
+  },
+  {
+    path: "/add-contacts",
+    name: "Add Contacts",
+    icon: Person,
+    component: AddContacts,
+    layout: "/submenu",
+  },
+  {
+    path: "/cashier-transaction",
+    name: "Cashier Transaction",
+    icon: Person,
+    component: CashierTransaction,
     layout: "/submenu",
   },
 ];
