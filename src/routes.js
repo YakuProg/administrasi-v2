@@ -77,6 +77,8 @@ import AddGoodsSale from './views/Sales/AddGoodsSale';
 import Expenses from './views/Expenses/Expenses';
 import AddContacts from './views/Contacts/AddContacts';
 import CashierTransaction from './views/CashierTransaction';
+import MenuAssets from './views/Assets/MenuAssets';
+import ManagementUser from './views/ManagementUser';
 
 const dashboardRoutes = [
   {
@@ -154,6 +156,20 @@ const dashboardRoutes = [
     name: "Cashier Transaction",
     icon: Person,
     component: CashierTransaction,
+    layout: "/submenu",
+  },
+  {
+    path: "/menu-assets",
+    name: "Assets",
+    icon: Person,
+    component: MenuAssets,
+    layout: "/submenu",
+  },
+  {
+    path: "/management-User",
+    name: "Management User",
+    icon: Person,
+    component: ManagementUser,
     layout: "/submenu",
   },
 ];
