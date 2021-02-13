@@ -40,6 +40,7 @@ function Expenses() {
   const classes = useStyles();
   const [nik, setNik] = React.useState("");
   const [nama, setNama] = React.useState("");
+  const [jenisKelamin, setJenisKelamin] = React.useState("");
   const [tempatLahir, setTempatLahir] = React.useState("");
   const [tanggalLahir, setTanggalLahir] = React.useState("");
   const [alamat, setAlamat] = React.useState("");
@@ -66,13 +67,13 @@ function Expenses() {
               </p>
             </CardHeader>
             <CardBody>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={3}>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={9}>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={12}>
                   <h4 className={classes.cardTitleBlack}>Biodata</h4>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
+              </GridContainer>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
                     labelText="NIK"
                     id="nik"
@@ -86,9 +87,7 @@ function Expenses() {
                     onChange={(event) => setNik(event.target.value)}
                   />
                 </GridItem>
-              </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
                     labelText="Nama"
                     id="nama"
@@ -102,9 +101,36 @@ function Expenses() {
                     onChange={(event) => setNama(event.target.value)}
                   />
                 </GridItem>
+                <GridItem xs={12} sm={12} md={4}>
+                  <FormControl
+                    fullWidth={true}
+                    className={classes.formControl}
+                  >
+                    <InputLabel id="demo-simple-select-helper-label">
+                      Jenis Kelamin
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-helper-label"
+                      id="demo-simple-select-helper"
+                      value={jenisKelamin}
+                      onChange={(event) => setJenisKelamin(event.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="l">
+                        <em>Laki-laki</em>
+                      </MenuItem>
+                      <MenuItem value="p">
+                        <em>Perempuan</em>
+                      </MenuItem>
+                    </Select>
+                    <FormHelperText>Pilih Jenis Kelamin</FormHelperText>
+                  </FormControl>
+                </GridItem>
               </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
                     labelText="Tempat Lahir"
                     id="tempatLahir"
@@ -118,9 +144,7 @@ function Expenses() {
                     onChange={(event) => setTempatLahir(event.target.value)}
                   />
                 </GridItem>
-              </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={4}>
                   <FormControl fullWidth>
                     <TextField
                       id="tanggalLahir"
@@ -136,25 +160,7 @@ function Expenses() {
                     />
                   </FormControl>
                 </GridItem>
-              </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
-                  <FormControl fullWidth={true}>
-                    <TextField
-                      id="alamat"
-                      label="Alamat"
-                      multiline
-                      rows={4}
-                      variant="outlined"
-                      value={alamat}
-                      onChange={(event) => setAlamat(event.target.value)}
-                      className={classes.formControl}
-                    />
-                  </FormControl>
-                </GridItem>
-              </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
                     labelText="Agama"
                     id="agama"
@@ -170,7 +176,23 @@ function Expenses() {
                 </GridItem>
               </GridContainer>
               <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={12}>
+                  <FormControl fullWidth={true}>
+                    <TextField
+                      id="alamat"
+                      label="Alamat"
+                      multiline
+                      rows={3}
+                      variant="outlined"
+                      value={alamat}
+                      onChange={(event) => setAlamat(event.target.value)}
+                      className={classes.formControl}
+                    />
+                  </FormControl>
+                </GridItem>
+              </GridContainer>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={4}>
                   <FormControl
                     fullWidth={true}
                     className={classes.formControl}
@@ -181,25 +203,23 @@ function Expenses() {
                     <Select
                       labelId="demo-simple-select-helper-label"
                       id="demo-simple-select-helper"
-                      value={namaBank}
-                      onChange={(event) => setNamaBank(event.target.value)}
+                      value={statusKawin}
+                      onChange={(event) => setStatusKawin(event.target.value)}
                     >
                       <MenuItem value="">
                         <em>None</em>
                       </MenuItem>
                       <MenuItem value="1">
-                        <em>BRI</em>
+                        <em>Menikah</em>
                       </MenuItem>
-                      <MenuItem value="1">
-                        <em>BCA</em>
+                      <MenuItem value="2">
+                        <em>Belum Menikah</em>
                       </MenuItem>
                     </Select>
-                    <FormHelperText>Pilih Bank</FormHelperText>
+                    <FormHelperText>Pilih Status Perkawinan</FormHelperText>
                   </FormControl>
                 </GridItem>
-              </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
                     labelText="Pekerjaan"
                     id="pekerjaan"
@@ -213,9 +233,7 @@ function Expenses() {
                     onChange={(event) => setPekerjaan(event.target.value)}
                   />
                 </GridItem>
-              </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6} >
+                <GridItem xs={12} sm={12} md={4} >
                   <CustomInput
                     labelText="NPWP"
                     id="npwp"
@@ -230,15 +248,14 @@ function Expenses() {
                   />
                 </GridItem>
               </GridContainer>
-              <Divider 
-                    className={classes.marginBottom}/>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={3}>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={9}>
+              <Divider className={classes.marginBottom}/>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={12}>
                   <h4 className={classes.cardTitleBlack}>Bank Accounts</h4>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
+              </GridContainer>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={4}>
                   <FormControl
                     fullWidth={true}
                     className={classes.formControl}
@@ -249,25 +266,23 @@ function Expenses() {
                     <Select
                       labelId="demo-simple-select-helper-label"
                       id="demo-simple-select-helper"
-                      value={statusKawin}
-                      onChange={(event) => setStatusKawin(event.target.value)}
+                      value={namaBank}
+                      onChange={(event) => setNamaBank(event.target.value)}
                     >
                       <MenuItem value="">
                         <em>None</em>
                       </MenuItem>
                       <MenuItem value="1">
-                        <em>Kawin</em>
+                        <em>BRI</em>
                       </MenuItem>
-                      <MenuItem value="1">
-                        <em>Belum Kawin</em>
+                      <MenuItem value="2">
+                        <em>BCA</em>
                       </MenuItem>
                     </Select>
-                    <FormHelperText>Pilih Status</FormHelperText>
+                    <FormHelperText>Pilih Nama Bank</FormHelperText>
                   </FormControl>
                 </GridItem>
-              </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
                     labelText="Nomor Rekening"
                     id="nomorRekening"
@@ -281,9 +296,7 @@ function Expenses() {
                     onChange={(event) => setNoRek(event.target.value)}
                   />
                 </GridItem>
-              </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
                     labelText="Nama Rekening"
                     id="namaRekening"
@@ -298,13 +311,13 @@ function Expenses() {
                   />
                 </GridItem>
               </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={2}>
+              <GridContainer>
+                <GridItem xs={1} sm={1} md={1}>
                   <FormControl className={classes.formControl}>
                     <InputLabel>Contacts Type</InputLabel>
                   </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
+                <GridItem xs={1} sm={1} md={1}>
                   <FormHelperText className={classes.formControl}>Customer</FormHelperText>
                   <Checkbox
                     value={"Customer"}
@@ -312,7 +325,7 @@ function Expenses() {
                     inputProps={{ 'aria-label': 'primary checkbox' }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
+                <GridItem xs={1} sm={1} md={1}>
                   <FormHelperText className={classes.formControl}>Vendor</FormHelperText>
                   <Checkbox
                     value={"Vendor"}
@@ -320,7 +333,7 @@ function Expenses() {
                     inputProps={{ 'aria-label': 'primary checkbox' }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
+                <GridItem xs={1} sm={1} md={1}>
                   <FormHelperText className={classes.formControl}>Employee</FormHelperText>
                   <Checkbox
                     value={"Employee"}
@@ -328,10 +341,8 @@ function Expenses() {
                     inputProps={{ 'aria-label': 'primary checkbox' }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={1}></GridItem>
-              </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={2}>
+
+                <GridItem xs={12} sm={12} md={1}>
                   <FormControl className={classes.formControl}>
                     <InputLabel>Account Type</InputLabel>
                   </FormControl>
@@ -352,10 +363,8 @@ function Expenses() {
                     inputProps={{ 'aria-label': 'primary checkbox' }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={2}></GridItem>
-              </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={1}></GridItem>
+                <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
                     labelText="File Scan"
                     id="fileScan"
@@ -372,6 +381,15 @@ function Expenses() {
                   <FormHelperText>File Scan</FormHelperText>
                 </GridItem>
               </GridContainer>
+              <GridContainer fullWidth>
+                <GridItem xs={12} sm={12} md={12}>
+                  <Button color="primary" className={classes.buttonRight} onClick={() => {}}>
+                    Add Bank Account
+                  </Button>
+                </GridItem>
+              </GridContainer>
+              <br />
+              <Divider />
               <br />
               <GridContainer fullWidth justify="left">
                 <GridItem xs={12} sm={12} md={2}>
