@@ -39,12 +39,14 @@ function Expenses() {
   const useStyles = makeStyles(styles);
   const classes = useStyles();
   const [payFrom, setPayFrom] = React.useState("");
+  const [assets, setAssets] = React.useState("");
   const [payLater, setPayLater] = React.useState("");
   const [benificiary, setBenificiary] = React.useState("");
   const [transactionDate, setTransactionDate] = React.useState("");
   const [transactionNo, setTransactionNo] = React.useState("");
   const [paymentMethod, setPaymentMethod] = React.useState("");
   const [paymentFor, setPaymentFor] = React.useState("");
+  const [category, setCategory] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [total, setTotal] = React.useState("");
   const [memo, setMemo] = React.useState("");
@@ -63,7 +65,49 @@ function Expenses() {
             </CardHeader>
             <CardBody>
               <GridContainer>
+                <GridItem md={8}></GridItem>
                 <GridItem xs={12} sm={12} md={4}>
+                  <CustomInput
+                    labelText="Transaction No."
+                    id="transactionNo"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    value={transactionNo}
+                    onChange={(event) => setTransactionNo(event.target.value)}
+                    inputProps={{
+                      type: "number",
+                      defaultValue: "",
+                    }}
+                  />
+                </GridItem>
+              </GridContainer>
+              <GridContainer>
+              <GridItem xs={12} sm={12} md={4}>
+                  <FormControl
+                    fullWidth={true}
+                    className={classes.formControl}
+                  >
+                    <InputLabel id="demo-simple-select-helper-label">
+                      Payment Method
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-helper-label"
+                      id="demo-simple-select-helper"
+                      value={paymentMethod}
+                      onChange={(event) => setPaymentMethod(event.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="1">
+                        <em>Payment A</em>
+                      </MenuItem>
+                    </Select>
+                    <FormHelperText>Pilih Payment</FormHelperText>
+                  </FormControl>
+                </GridItem>
+                <GridItem xs={12} sm={12} md={3}>
                   <FormControl
                     fullWidth={true}
                     className={classes.formControl}
@@ -87,12 +131,32 @@ function Expenses() {
                     <FormHelperText>Pilih Location</FormHelperText>
                   </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
-                  <FormControl className={classes.formControl}>
-                    <InputLabel>or</InputLabel>
+                <GridItem xs={12} sm={12} md={3}>
+                  <FormControl
+                    fullWidth={true}
+                    className={classes.formControl}
+                  >
+                    <InputLabel id="demo-simple-select-helper-label">
+                      Assets
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-helper-label"
+                      id="demo-simple-select-helper"
+                      value={assets}
+                      onChange={(event) => setAssets(event.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="1">
+                        <em>Assets A</em>
+                      </MenuItem>
+                    </Select>
+                    <FormHelperText>Pilih Assets</FormHelperText>
                   </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={3}>
+                <GridItem xs={12} sm={12} md={2}>
+                  <div className={classes.orLabel}>or </div>
                   <FormHelperText className={classes.formControl}>Pay Later</FormHelperText>
                   <Checkbox
                     value={payLater}
@@ -126,8 +190,6 @@ function Expenses() {
                     <FormHelperText>Pilih Benificiary</FormHelperText>
                   </FormControl>
                 </GridItem>
-              </GridContainer>
-              <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <FormControl fullWidth>
                     <TextField
@@ -144,49 +206,6 @@ function Expenses() {
                     />
                   </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Transaction No."
-                    id="transactionNo"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    value={transactionNo}
-                    onChange={(event) => setTransactionNo(event.target.value)}
-                    inputProps={{
-                      type: "number",
-                      defaultValue: "",
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={4}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
-                    <InputLabel id="demo-simple-select-helper-label">
-                      Payment Method
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-helper-label"
-                      id="demo-simple-select-helper"
-                      value={paymentMethod}
-                      onChange={(event) => setPaymentMethod(event.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value="1">
-                        <em>Payment A</em>
-                      </MenuItem>
-                    </Select>
-                    <FormHelperText>Pilih Payment</FormHelperText>
-                  </FormControl>
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <FormControl
                     fullWidth={true}
@@ -211,18 +230,30 @@ function Expenses() {
                     <FormHelperText>Pilih Payment For</FormHelperText>
                   </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <FormControl fullWidth={true}>
-                    <TextField
-                      id="description"
-                      label="Description"
-                      multiline
-                      rows={4}
-                      variant="outlined"
-                      value={description}
-                      onChange={(event) => setDescription(event.target.value)}
-                      className={classes.formControl}
-                    />
+              </GridContainer>
+              <GridContainer>
+              <GridItem xs={12} sm={12} md={4}>
+                  <FormControl
+                    fullWidth={true}
+                    className={classes.formControl}
+                  >
+                    <InputLabel id="demo-simple-select-helper-label">
+                      Category
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-helper-label"
+                      id="demo-simple-select-helper"
+                      value={category}
+                      onChange={(event) => setCategory(event.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="1">
+                        <em>Category A</em>
+                      </MenuItem>
+                    </Select>
+                    <FormHelperText>Pilih Category</FormHelperText>
                   </FormControl>
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
@@ -240,7 +271,29 @@ function Expenses() {
                     }}
                   />
                 </GridItem>
+                <GridItem xs={12} sm={12} md={4}>
+                  <FormControl fullWidth={true}>
+                    <TextField
+                      id="description"
+                      label="Description"
+                      multiline
+                      rows={4}
+                      variant="outlined"
+                      value={description}
+                      onChange={(event) => setDescription(event.target.value)}
+                      className={classes.formControl}
+                    />
+                  </FormControl>
+                </GridItem>
               </GridContainer>
+              <GridContainer fullWidth justify="left">
+                <GridItem xs={12} sm={12} md={12}>
+                  <Button color="primary" className={classes.buttonAddMore} onClick={() => {}}>
+                    Add More
+                  </Button>
+                </GridItem>
+              </GridContainer>
+              <Divider />
               <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <FormControl fullWidth={true}>
@@ -256,8 +309,6 @@ function Expenses() {
                     />
                   </FormControl>
                 </GridItem>
-              </GridContainer>
-              <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
                     labelText="Attachment"
@@ -274,6 +325,8 @@ function Expenses() {
                   />
                   <FormHelperText>Attachment</FormHelperText>
                 </GridItem>
+              </GridContainer>
+              <GridContainer>
               </GridContainer>
               <br />
               <GridContainer fullWidth justify="left">
@@ -298,6 +351,11 @@ function Expenses() {
 const styles = () => ({
   formControl: {
     marginTop: "30px",
+  },
+  orLabel: {
+    marginTop: 55,
+    float:"left",
+    marginRight: 15
   },
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -335,6 +393,11 @@ const styles = () => ({
   },
   buttonRight: {
     float: 'right'
+  },
+  buttonAddMore: {
+    float: 'right',
+    marginTop: 15,
+    marginBottom: 15  
   }
 });
 
