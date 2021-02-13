@@ -10,6 +10,8 @@ import { Line } from "react-chartjs-2";
 // import AccessTime from "@material-ui/icons/AccessTime";
 import CardHeader from "../../components/Card/CardHeader.js";
 import CardFooter from "../../components/Card/CardFooter.js";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 //WAWAN
 import FormControl from "@material-ui/core/FormControl";
@@ -40,193 +42,159 @@ export default function AddCoopraSale() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={12}>
           <Card>
-            <CardHeader>
-              <h4 className={classes.cardTitleBlack}>Add Coopra Sale</h4>
-              <Divider />
+            <CardHeader color="primary">
+              <h4 className={classes.cardTitleWhite}>Add Coopra Sale</h4>
+              <p className={classes.cardCategoryWhite}>
+                Here is a subtitle for this table
+              </p>
             </CardHeader>
             <CardBody>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={2}>
-                  <FormControl variant="outlined" className={classes.labelForm}>
-                    <InputLabel>Pabrik</InputLabel>
-                  </FormControl>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={8}>
-                  <FormControl variant="outlined" className={classes.selectButton}>
-                    <InputLabel htmlFor="pabrik">Pabrik</InputLabel>
+                <GridItem xs={12} sm={12} md={6}>
+                  <FormControl
+                    fullWidth={true}
+                    className={classes.formControl}
+                  >
+                    <InputLabel id="demo-simple-select-helper-label">
+                      Pabrik
+                    </InputLabel>
                     <Select
-                      native
+                      labelId="demo-simple-select-helper-label"
+                      id="demo-simple-select-helper"
                       value={pabrik}
                       onChange={(event) => setPabrik(event.target.value)}
-                      label="Pabrik"
-                      inputProps={{
-                        name: 'pabrik',
-                        id: 'pabrik',
-                      }}
                     >
-                      <option aria-label="None" value="" />
-                      <option value={1}>Pabrik A</option>
-                      <option value={2}>Pabrik B</option>
-                      <option value={3}>Pabrik C</option>
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="1">
+                        <em>Pabrik A</em>
+                      </MenuItem>
                     </Select>
+                    <FormHelperText>Pilih Pabrik</FormHelperText>
                   </FormControl>
                 </GridItem>
-              </GridContainer>
-              <Divider className={classes.divider} />
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={2}>
-                  <FormControl variant="outlined" className={classes.labelForm}>
-                    <InputLabel>Vendor/Relasi</InputLabel>
-                  </FormControl>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={8}>
-                  <FormControl variant="outlined" className={classes.selectButton}>
-                    <InputLabel htmlFor="vendor">Vendor</InputLabel>
+                <GridItem xs={12} sm={12} md={6}>
+                  <FormControl
+                    fullWidth={true}
+                    className={classes.formControl}
+                  >
+                    <InputLabel id="demo-simple-select-helper-label">
+                      Vendor/Relasi
+                    </InputLabel>
                     <Select
-                      native
+                      labelId="demo-simple-select-helper-label"
+                      id="demo-simple-select-helper"
                       value={vendor}
                       onChange={(event) => setVendor(event.target.value)}
-                      label="Vendor"
-                      inputProps={{
-                        name: 'vendor',
-                        id: 'vendor',
-                      }}
                     >
-                      <option aria-label="None" value="" />
-                      <option value={1}>Ben A</option>
-                      <option value={2}>Ben B</option>
-                      <option value={3}>Ben C</option>
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="1">
+                        <em>Vendor A</em>
+                      </MenuItem>
                     </Select>
+                    <FormHelperText>Pilih Vendor/Relasi</FormHelperText>
                   </FormControl>
                 </GridItem>
               </GridContainer>
-              <Divider className={classes.divider} />
               <GridContainer>
-                <GridItem xs={12} sm={12} md={2}>
-                  <FormControl variant="outlined" className={classes.labelForm}>
-                    <InputLabel>Date</InputLabel>
-                  </FormControl>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={3}>
-                  <FormControl className={classes.selectButton}>
+                <GridItem xs={12} sm={12} md={6}>
+                  <FormControl fullWidth>
                     <TextField
                       id="date"
                       label="Date"
                       type="date"
                       className={classes.textField}
-                      onChange={(event) => setDate(event.target.value)}
-                      value={date}
                       InputLabelProps={{
                         shrink: true,
                       }}
-                      variant="outlined" 
+                      className={classes.formControl}
+                      value={date}
+                      onChange={(event) => setDate(event.target.value)}
                     />
                   </FormControl>
-                </GridItem><GridItem xs={12} sm={12} md={1}>
-                  <FormControl variant="outlined" className={classes.labelForm}>
-                    <InputLabel className={classes.label}>Due Date</InputLabel>
-                  </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <FormControl className={classes.selectButton}>
+                <GridItem xs={12} sm={12} md={6}>
+                  <FormControl fullWidth>
                     <TextField
-                      id="date"
+                      id="dueDate"
                       label="Due Date"
                       type="date"
                       className={classes.textField}
-                      onChange={(event) => setDueDate(event.target.value)}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      className={classes.formControl}
                       value={dueDate}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      variant="outlined"
+                      onChange={(event) => setDueDate(event.target.value)}
                     />
                   </FormControl>
                 </GridItem>
+                
               </GridContainer>
-              <Divider className={classes.divider} />
               <GridContainer>
+                <GridItem xs={12} sm={12} md={6}>
+                  <CustomInput
+                    labelText="Plat Mobil"
+                    id="platMobil"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: "",
+                    }}
+                    value={platMobil}
+                    onChange={(event) => setPlatMobil(event.target.value)}
+                  />
+                </GridItem>
                 <GridItem xs={12} sm={12} md={2}>
-                  <FormControl variant="outlined" className={classes.labelForm}>
-                    <InputLabel className={classes.label}>Plat Mobil</InputLabel>
-                  </FormControl>
+                  <CustomInput
+                    labelText="Bruto"
+                    id="bruto"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: "",
+                      type: "number",
+                    }}
+                    value={bruto}
+                    onChange={(event) => setBruto(event.target.value)}
+                  />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={3}>
-                  <FormControl className={classes.platMobil}>
-                    <TextField
-                      variant="outlined"
-                      id="platMobil"
-                      label="Plat Mobil"
-                      type="platMobil"
-                      onChange={(event) => setPlatMobil(event.target.value)}
-                      value={platMobil}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </FormControl>
-                </GridItem><GridItem xs={12} sm={12} md={1}>
-                  <FormControl variant="outlined" className={classes.labelForm}>
-                    <InputLabel>Bruto</InputLabel>
-                  </FormControl>
+                <GridItem xs={12} sm={12} md={2}>
+                  <CustomInput
+                    labelText="Pot%"
+                    id="pot"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: "",
+                      type: "number",
+                    }}
+                    value={pot}
+                    onChange={(event) => setPot(event.target.value)}
+                  />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
-                  <FormControl className={classes.bruto}>
-                    <TextField
-                      variant="outlined"
-                      id="bruto"
-                      label="Bruto"
-                      type="bruto"
-                      onChange={(event) => setBruto(event.target.value)}
-                      value={bruto}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </FormControl>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
-                  <FormControl variant="outlined" className={classes.labelForm}>
-                    <InputLabel>Pot%</InputLabel>
-                  </FormControl>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
-                  <FormControl className={classes.pot}>
-                    <TextField
-                      variant="outlined"
-                      id="pot"
-                      label="Pot%"
-                      type="pot"
-                      onChange={(event) => setPot(event.target.value)}
-                      value={pot}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </FormControl>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
-                  <FormControl variant="outlined" className={classes.labelForm}>
-                    <InputLabel>Colly</InputLabel>
-                  </FormControl>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
-                  <FormControl className={classes.colly}>
-                    <TextField
-                      variant="outlined"
-                      id="colly"
-                      label="Colly"
-                      type="colly"
-                      onChange={(event) => setColly(event.target.value)}
-                      value={colly}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </FormControl>
+                <GridItem xs={12} sm={12} md={2}>
+                  <CustomInput
+                    labelText="Colly"
+                    id="colly"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: "",
+                      type: "number",
+                    }}
+                    value={colly}
+                    onChange={(event) => setColly(event.target.value)}
+                  />
                 </GridItem>
               </GridContainer>
-              <Divider className={classes.divider} />
             </CardBody>
             <CardFooter>
                 <GridItem xs={12} sm={12} md={3}>
@@ -251,6 +219,9 @@ export default function AddCoopraSale() {
 }
 
 const styles = () => ({
+  formControl: {
+    marginTop: "30px",
+  },
   cardTitleBlack: {
     color: "#000000",
     marginTop: "30px",
@@ -280,5 +251,27 @@ const styles = () => ({
   },
   buttonRight: {
     float: 'right'
-  }
+  },
+  cardTitleWhite: {
+    color: "#FFFFFF",
+    marginTop: "0px",
+    minHeight: "auto",
+    fontWeight: "300",
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    marginBottom: "3px",
+    textDecoration: "none",
+    "& small": {
+      color: "#777",
+      fontSize: "65%",
+      fontWeight: "400",
+      lineHeight: "1",
+    },
+  },
+  cardCategoryWhite: {
+    color: "rgba(255,255,255,.62)",
+    margin: "0",
+    fontSize: "14px",
+    marginTop: "0",
+    marginBottom: "0",
+  },
 });

@@ -40,7 +40,7 @@ function AddGoodsSale() {
   const [vendore, setVendore] = React.useState("");
   const [customer, setCustomer] = React.useState("");
   const [transDate, setTransDate] = React.useState("");
-  const [transactionTo, setTransactionTo] = React.useState("");
+  const [transactionNo, setTransactionNo] = React.useState("");
   const [dueDate, setDueDate] = React.useState("");
   const [pabrik, setPabrik] = React.useState("");
   const [term, setTerm] = React.useState("");
@@ -54,6 +54,7 @@ function AddGoodsSale() {
   const [attachment, setAttachment] = React.useState("");
   const [total, setTotal] = React.useState("");
   const [advance, setAdvance] = React.useState("");
+  const [balanceDue, setBalanceDue] = React.useState("");
   
   return (
     <div>
@@ -67,6 +68,23 @@ function AddGoodsSale() {
               </p>
             </CardHeader>
             <CardBody>
+              <GridContainer>
+                <GridItem md={6}></GridItem>
+                <GridItem xs={12} sm={12} md={6}>
+                  <CustomInput
+                    labelText="Transaction No"
+                    id="transactionNo"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: "",
+                    }}
+                    value={transactionNo}
+                    onChange={(event) => setTransactionNo(event.target.value)}
+                  />
+                </GridItem>
+              </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
                   <FormControl
@@ -134,20 +152,7 @@ function AddGoodsSale() {
                     />
                   </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="Transaction To"
-                    id="transactionTo"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      defaultValue: "",
-                    }}
-                    value={transactionTo}
-                    onChange={(event) => setTransactionTo(event.target.value)}
-                  />
-                </GridItem>
+                
                 <GridItem xs={12} sm={12} md={6}>
                   <FormControl fullWidth>
                     <TextField
@@ -204,7 +209,7 @@ function AddGoodsSale() {
                 </GridItem>
               </GridContainer>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={2}>
                   <FormControl
                     fullWidth={true}
                     className={classes.formControl}
@@ -228,72 +233,66 @@ function AddGoodsSale() {
                     <FormHelperText>Pilih Produk</FormHelperText>
                   </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <GridContainer>
-                    <GridItem xs={12} sm={12} md={3}>
-                      <CustomInput
-                        labelText="Qty"
-                        id="qty"
-                        formControlProps={{
-                          fullWidth: true,
-                        }}
-                        inputProps={{
-                          defaultValue: "",
-                          type: "number",
-                        }}
-                        value={qty}
-                        onChange={(event) => setQty(event.target.value)}
-                      />
-                    </GridItem>
-                    <GridItem xs={12} sm={12} md={3}>
-                      <CustomInput
-                        labelText="Unit"
-                        id="unit"
-                        formControlProps={{
-                          fullWidth: true,
-                        }}
-                        inputProps={{
-                          defaultValue: "",
-                          type: "number",
-                        }}
-                        value={unit}
-                        onChange={(event) => setUnit(event.target.value)}
-                      />
-                    </GridItem>
-                    <GridItem xs={12} sm={12} md={3}>
-                      <CustomInput
-                        labelText="Unit Price"
-                        id="unitPrice"
-                        formControlProps={{
-                          fullWidth: true,
-                        }}
-                        inputProps={{
-                          defaultValue: "",
-                          type: "number",
-                        }}
-                        value={unitPrice}
-                        onChange={(event) => setUnitPrice(event.target.value)}
-                      />
-                    </GridItem>
-                    <GridItem xs={12} sm={12} md={3}>
-                      <CustomInput
-                        labelText="Amount"
-                        id="amount"
-                        formControlProps={{
-                          fullWidth: true,
-                        }}
-                        inputProps={{
-                          defaultValue: "",
-                          type: "number",
-                        }}
-                        value={amount}
-                        onChange={(event) => setAmount(event.target.value)}
-                      />
-                    </GridItem>
-                  </GridContainer>
+                <GridItem xs={12} sm={12} md={1}>
+                  <CustomInput
+                    labelText="Qty"
+                    id="qty"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: "",
+                      type: "number",
+                    }}
+                    value={qty}
+                    onChange={(event) => setQty(event.target.value)}
+                  />
                 </GridItem>
-              </GridContainer>
-              <GridContainer>
+                <GridItem xs={12} sm={12} md={1}>
+                  <CustomInput
+                    labelText="Unit"
+                    id="unit"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: "",
+                      type: "number",
+                    }}
+                    value={unit}
+                    onChange={(event) => setUnit(event.target.value)}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={1}>
+                  <CustomInput
+                    labelText="Unit Price"
+                    id="unitPrice"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: "",
+                      type: "number",
+                    }}
+                    value={unitPrice}
+                    onChange={(event) => setUnitPrice(event.target.value)}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={1}>
+                  <CustomInput
+                    labelText="Amount"
+                    id="amount"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: "",
+                      type: "number",
+                    }}
+                    value={amount}
+                    onChange={(event) => setAmount(event.target.value)}
+                  />
+                </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
                   <FormControl fullWidth={true}>
                     <TextField
@@ -309,6 +308,14 @@ function AddGoodsSale() {
                   </FormControl>
                 </GridItem>
               </GridContainer>
+              <GridContainer fullWidth>
+                <GridItem xs={12} sm={12} md={12}>
+                  <Button color="primary" className={classes.buttonRight} onClick={() => {}}>
+                    Add More Data
+                  </Button>
+                </GridItem>
+              </GridContainer>
+              <Divider className={classes.divider} />
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
                   <FormControl fullWidth={true}>
@@ -324,7 +331,7 @@ function AddGoodsSale() {
                     />
                   </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={3}>
                   <CustomInput
                     labelText="Attachment"
                     id="attachment"
@@ -340,9 +347,22 @@ function AddGoodsSale() {
                   />
                   <FormHelperText>Attachment</FormHelperText>
                 </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={3}>
+                <GridItem xs={12} sm={12} md={1}>
+                  <CustomInput
+                    labelText="Balance Due"
+                    id="balanceDue"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      defaultValue: "",
+                      type: "number",
+                    }}
+                    value={balanceDue}
+                    onChange={(event) => setBalanceDue(event.target.value)}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={1}>
                   <CustomInput
                     labelText="Total"
                     id="total"
@@ -357,7 +377,7 @@ function AddGoodsSale() {
                     onChange={(event) => setTotal(event.target.value)}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={3}>
+                <GridItem xs={12} sm={12} md={1}>
                   <CustomInput
                     labelText="Advance"
                     id="advance"
@@ -436,6 +456,9 @@ const styles = () => ({
   },
   buttonRight: {
     float: 'right'
+  },
+  divider: {
+    marginTop: 15
   }
 });
 
