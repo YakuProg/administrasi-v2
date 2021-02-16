@@ -99,9 +99,9 @@ function MenuAssets() {
                 }}
                 inputProps={{
                   defaultValue: "",
+                  onChange: (event) => setCode(event.target.value)
                 }}
                 value={code}
-                onChange={(event) => setCode(event.target.value)}
               />
             </GridItem>
             <GridItem xs={12} sm={12} md={6}>
@@ -113,9 +113,9 @@ function MenuAssets() {
                 }}
                 inputProps={{
                   defaultValue: "",
+                  onChange: (event) => setName(event.target.value)
                 }}
                 value={name}
-                onChange={(event) => setName(event.target.value)}
               />
             </GridItem>
           </GridContainer>
@@ -165,9 +165,9 @@ function MenuAssets() {
                   inputProps={{
                     defaultValue: "",
                     type: "number",
+                    onChange: (event) => setJumlah(event.target.value)
                   }}
                   value={jumlah}
-                  onChange={(event) => setJumlah(event.target.value)}
                 />
               </div>
             </GridItem>
@@ -201,9 +201,9 @@ function MenuAssets() {
                 inputProps={{
                   type: "file",
                   defaultValue: "",
+                  onChange: (event) => setAssets(event.target.value)
                 }}
                 value={assets}
-                onChange={(event) => setAssets(event.target.value)}
               />
             </GridItem>
           </GridContainer>

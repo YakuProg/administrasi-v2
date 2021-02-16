@@ -79,9 +79,9 @@ function AddGoodsSale() {
                     }}
                     inputProps={{
                       defaultValue: "",
+                      onChange: (event) => setTransactionNo(event.target.value)
                     }}
                     value={transactionNo}
-                    onChange={(event) => setTransactionNo(event.target.value)}
                   />
                 </GridItem>
               </GridContainer>
@@ -202,9 +202,9 @@ function AddGoodsSale() {
                     }}
                     inputProps={{
                       defaultValue: "",
+                      onChange: (event) => setTerm(event.target.value)
                     }}
                     value={term}
-                    onChange={(event) => setTerm(event.target.value)}
                   />
                 </GridItem>
               </GridContainer>
@@ -243,9 +243,9 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
+                      onChange: (event) => setQty(event.target.value)
                     }}
                     value={qty}
-                    onChange={(event) => setQty(event.target.value)}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={1}>
@@ -258,9 +258,9 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
+                      onChange: (event) => setUnit(event.target.value)
                     }}
                     value={unit}
-                    onChange={(event) => setUnit(event.target.value)}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={1}>
@@ -273,9 +273,9 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
+                      onChange: (event) => setUnitPrice(event.target.value)
                     }}
                     value={unitPrice}
-                    onChange={(event) => setUnitPrice(event.target.value)}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={1}>
@@ -288,9 +288,9 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
+                      onChange: (event) => setAmount(event.target.value)
                     }}
                     value={amount}
-                    onChange={(event) => setAmount(event.target.value)}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
@@ -341,9 +341,9 @@ function AddGoodsSale() {
                     inputProps={{
                       type: "file",
                       defaultValue: "",
+                      onChange: (event) => setAttachment(event.target.value)
                     }}
                     value={attachment}
-                    onChange={(event) => setAttachment(event.target.value)}
                   />
                   <FormHelperText>Attachment</FormHelperText>
                 </GridItem>
@@ -357,9 +357,9 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
+                      onChange: (event) => setBalanceDue(event.target.value)
                     }}
                     value={balanceDue}
-                    onChange={(event) => setBalanceDue(event.target.value)}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={1}>
@@ -372,9 +372,9 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
+                      onChange: (event) => setTotal(event.target.value)
                     }}
                     value={total}
-                    onChange={(event) => setTotal(event.target.value)}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={1}>
@@ -387,9 +387,9 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
+                      onChange: (event) => setAdvance(event.target.value)
                     }}
                     value={advance}
-                    onChange={(event) => setAdvance(event.target.value)}
                   />
                 </GridItem>
               </GridContainer>

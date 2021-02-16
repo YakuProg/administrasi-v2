@@ -74,10 +74,10 @@ function Expenses() {
                       fullWidth: true,
                     }}
                     value={transactionNo}
-                    onChange={(event) => setTransactionNo(event.target.value)}
                     inputProps={{
                       type: "number",
                       defaultValue: "",
+                      onChange: (event) => setTransactionNo(event.target.value)
                     }}
                   />
                 </GridItem>
@@ -264,10 +264,10 @@ function Expenses() {
                       fullWidth: true,
                     }}
                     value={total}
-                    onChange={(event) => setTotal(event.target.value)}
                     inputProps={{
                       type: "number",
                       defaultValue: "",
+                      onChange: (event) => setTotal(event.target.value)
                     }}
                   />
                 </GridItem>
