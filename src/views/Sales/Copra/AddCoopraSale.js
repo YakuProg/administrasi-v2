@@ -1,33 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import GridItem from "../../components/Grid/GridItem.js";
-import GridContainer from "../../components/Grid/GridContainer.js";
-import CustomInput from "../../components/CustomInput/CustomInput.js";
-import Card from "../../components/Card/Card.js";
-import CardBody from "../../components/Card/CardBody.js";
-import Divider from "@material-ui/core/Divider";
-import { Line } from "react-chartjs-2";
+import GridItem from "../../../components/Grid/GridItem.js";
+import GridContainer from "../../../components/Grid/GridContainer.js";
+import CustomInput from "../../../components/CustomInput/CustomInput.js";
+import Card from "../../../components/Card/Card.js";
+import CardBody from "../../../components/Card/CardBody.js";
 // import AccessTime from "@material-ui/icons/AccessTime";
-import CardHeader from "../../components/Card/CardHeader.js";
-import CardFooter from "../../components/Card/CardFooter.js";
+import CardHeader from "../../../components/Card/CardHeader.js";
+import CardFooter from "../../../components/Card/CardFooter.js";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
 //WAWAN
 import FormControl from "@material-ui/core/FormControl";
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import TextField from '@material-ui/core/TextField';
-import Button from "../../components/CustomButtons/Button.js";
-
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import TextField from "@material-ui/core/TextField";
+import Button from "../../../components/CustomButtons/Button.js";
 
 export default function AddCoopraSale() {
   const useStyles = makeStyles(styles);
   const classes = useStyles();
-  const [dataResponse, setDataResponse] = useState({
-    dataRekap: null,
-    isLoading: true,
-  });
   const [pabrik, setPabrik] = React.useState("");
   const [vendor, setVendor] = React.useState("");
   const [date, setDate] = React.useState("");
@@ -51,10 +44,7 @@ export default function AddCoopraSale() {
             <CardBody>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                  <FormControl fullWidth={true} className={classes.formControl}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Pabrik
                     </InputLabel>
@@ -75,10 +65,7 @@ export default function AddCoopraSale() {
                   </FormControl>
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                  <FormControl fullWidth={true} className={classes.formControl}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Vendor/Relasi
                     </InputLabel>
@@ -106,7 +93,6 @@ export default function AddCoopraSale() {
                       id="date"
                       label="Date"
                       type="date"
-                      className={classes.textField}
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -122,7 +108,6 @@ export default function AddCoopraSale() {
                       id="dueDate"
                       label="Due Date"
                       type="date"
-                      className={classes.textField}
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -132,7 +117,6 @@ export default function AddCoopraSale() {
                     />
                   </FormControl>
                 </GridItem>
-                
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
@@ -197,19 +181,25 @@ export default function AddCoopraSale() {
               </GridContainer>
             </CardBody>
             <CardFooter>
-                <GridItem xs={12} sm={12} md={3}>
-                  <Button onClick={() => {}}>
-                    Cancel
-                  </Button>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={9}>
-                  <Button className={classes.buttonRight} color="primary" onClick={() => {}}>
-                    Create Sale
-                  </Button>
-                  <Button color="primary" className={classes.buttonRight} onClick={() => {}}>
-                    Create Sale & Purchase
-                  </Button>
-                </GridItem>
+              <GridItem xs={12} sm={12} md={3}>
+                <Button onClick={() => {}}>Cancel</Button>
+              </GridItem>
+              <GridItem xs={12} sm={12} md={9}>
+                <Button
+                  className={classes.buttonRight}
+                  color="primary"
+                  onClick={() => {}}
+                >
+                  Create Sale
+                </Button>
+                <Button
+                  color="primary"
+                  className={classes.buttonRight}
+                  onClick={() => {}}
+                >
+                  Create Sale & Purchase
+                </Button>
+              </GridItem>
             </CardFooter>
           </Card>
         </GridItem>
@@ -238,19 +228,19 @@ const styles = () => ({
   },
   label: {
     minWidth: 100,
-    textAlign: 'left'
+    textAlign: "left",
   },
   divider: {
-    margin: 20
+    margin: 20,
   },
   labelForm: {
     textAlign: "right",
   },
   platMobil: {
-    minWidth: '100%'
+    minWidth: "100%",
   },
   buttonRight: {
-    float: 'right'
+    float: "right",
   },
   cardTitleWhite: {
     color: "#FFFFFF",
