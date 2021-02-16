@@ -54,11 +54,11 @@ function AddExpenses() {
                     formControlProps={{
                       fullWidth: true,
                     }}
-                    value={transactionNo}
-                    onChange={(event) => setTransactionNo(event.target.value)}
                     inputProps={{
                       type: "number",
                       defaultValue: "",
+                      onChange: (event) => setTransactionNo(event.target.value),
+                      value: transactionNo
                     }}
                   />
                 </GridItem>
@@ -229,11 +229,11 @@ function AddExpenses() {
                     formControlProps={{
                       fullWidth: true,
                     }}
-                    value={total}
-                    onChange={(event) => setTotal(event.target.value)}
                     inputProps={{
                       type: "number",
                       defaultValue: "",
+                      onChange: (event) => setTotal(event.target.value),
+                      value: total
                     }}
                   />
                 </GridItem>
@@ -289,9 +289,9 @@ function AddExpenses() {
                     inputProps={{
                       type: "file",
                       defaultValue: "",
+                      value: attachment,
+                      onChange: (event) => setAttachment(event.target.value)
                     }}
-                    value={attachment}
-                    onChange={(event) => setAttachment(event.target.value)}
                   />
                   <FormHelperText>Attachment</FormHelperText>
                 </GridItem>

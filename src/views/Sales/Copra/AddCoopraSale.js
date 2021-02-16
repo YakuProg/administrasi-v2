@@ -128,9 +128,9 @@ export default function AddCoopraSale() {
                     }}
                     inputProps={{
                       defaultValue: "",
+                      onChange: (event) => setPlatMobil(event.target.value),
+                      value: platMobil
                     }}
-                    value={platMobil}
-                    onChange={(event) => setPlatMobil(event.target.value)}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={2}>
@@ -143,9 +143,9 @@ export default function AddCoopraSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
+                      onChange: (event) => setBruto(event.target.value),
+                      value: bruto
                     }}
-                    value={bruto}
-                    onChange={(event) => setBruto(event.target.value)}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={2}>
@@ -158,9 +158,9 @@ export default function AddCoopraSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
+                      onChange: (event) => setPot(event.target.value),
+                      value: pot
                     }}
-                    value={pot}
-                    onChange={(event) => setPot(event.target.value)}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={2}>
@@ -173,9 +173,9 @@ export default function AddCoopraSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
+                      onChange: (event) => setColly(event.target.value),
+                      value: colly
                     }}
-                    value={colly}
-                    onChange={(event) => setColly(event.target.value)}
                   />
                 </GridItem>
               </GridContainer>

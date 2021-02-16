@@ -66,8 +66,9 @@ function TransferFounds() {
                     }}
                     inputProps={{
                       type: "number",
+                      defaultValue: "",
                       value: amount,
-                      onChange: (event) => setAmount(event.target.value),
+                      onChange: (event) => setAmount(event.target.value)
                     }}
                   />
                 </GridItem>
@@ -98,8 +99,8 @@ function TransferFounds() {
                     inputProps={{
                       type: "file",
                       defaultValue: "",
-                      value: attachment,
                       onChange: (event) => setAttachment(event.target.value),
+                      value: attachment                   
                     }}
                   />
                   <FormHelperText>Attachment</FormHelperText>
