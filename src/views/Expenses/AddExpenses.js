@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AddAlert from "@material-ui/icons/AddAlert";
 import CardHeader from "../../components/Card/CardHeader.js";
 import GridItem from "../../components/Grid/GridItem.js";
 import GridContainer from "../../components/Grid/GridContainer.js";
@@ -8,34 +7,16 @@ import CustomInput from "../../components/CustomInput/CustomInput.js";
 import Button from "../../components/CustomButtons/Button.js";
 import Card from "../../components/Card/Card.js";
 import CardBody from "../../components/Card/CardBody.js";
-import Snackbar from "../../components/Snackbar/Snackbar.js";
-import { useHistory, useLocation } from "react-router-dom";
-import {
-  getComplaintProgress,
-  postComplaintVerivikasi,
-  getInqueryUnitKerja,
-  getDataCategory,
-  getListEscalationStatus,
-  postSubmitEskalasiTo,
-  getDataComplaintDetail,
-} from "../../config/Api/complaint";
-import { useStoreState } from "easy-peasy";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Divider from "@material-ui/core/Divider";
-import { Save, ArrowBackOutlined } from "@material-ui/icons";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
-import Checkbox from '@material-ui/core/Checkbox';
+import Checkbox from "@material-ui/core/Checkbox";
 
-function Expenses() {
+function AddExpenses() {
   const useStyles = makeStyles(styles);
   const classes = useStyles();
   const [payFrom, setPayFrom] = React.useState("");
@@ -51,7 +32,7 @@ function Expenses() {
   const [total, setTotal] = React.useState("");
   const [memo, setMemo] = React.useState("");
   const [attachment, setAttachment] = React.useState("");
-  
+
   return (
     <div>
       <GridContainer>
@@ -73,21 +54,18 @@ function Expenses() {
                     formControlProps={{
                       fullWidth: true,
                     }}
-                    value={transactionNo}
                     inputProps={{
                       type: "number",
                       defaultValue: "",
-                      onChange: (event) => setTransactionNo(event.target.value)
+                      onChange: (event) => setTransactionNo(event.target.value),
+                      value: transactionNo
                     }}
                   />
                 </GridItem>
               </GridContainer>
               <GridContainer>
-              <GridItem xs={12} sm={12} md={4}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                <GridItem xs={12} sm={12} md={4}>
+                  <FormControl fullWidth={true} className={classes.formControl}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Payment Method
                     </InputLabel>
@@ -108,10 +86,7 @@ function Expenses() {
                   </FormControl>
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                  <FormControl fullWidth={true} className={classes.formControl}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Pay From
                     </InputLabel>
@@ -132,10 +107,7 @@ function Expenses() {
                   </FormControl>
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                  <FormControl fullWidth={true} className={classes.formControl}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Assets
                     </InputLabel>
@@ -157,20 +129,19 @@ function Expenses() {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={2}>
                   <div className={classes.orLabel}>or </div>
-                  <FormHelperText className={classes.formControl}>Pay Later</FormHelperText>
+                  <FormHelperText className={classes.formControl}>
+                    Pay Later
+                  </FormHelperText>
                   <Checkbox
                     value={payLater}
                     onChange={(event) => setPayLater(event.target.value)}
-                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
                   />
                 </GridItem>
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                  <FormControl fullWidth={true} className={classes.formControl}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Benificiary
                     </InputLabel>
@@ -196,21 +167,19 @@ function Expenses() {
                       id="transcDate"
                       label="Transaction Date"
                       type="date"
-                      className={classes.textField}
                       InputLabelProps={{
                         shrink: true,
                       }}
                       className={classes.formControl}
                       value={transactionDate}
-                      onChange={(event) => setTransactionDate(event.target.value)}
+                      onChange={(event) =>
+                        setTransactionDate(event.target.value)
+                      }
                     />
                   </FormControl>
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                  <FormControl fullWidth={true} className={classes.formControl}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Payment For
                     </InputLabel>
@@ -232,11 +201,8 @@ function Expenses() {
                 </GridItem>
               </GridContainer>
               <GridContainer>
-              <GridItem xs={12} sm={12} md={4}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                <GridItem xs={12} sm={12} md={4}>
+                  <FormControl fullWidth={true} className={classes.formControl}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Category
                     </InputLabel>
@@ -263,11 +229,11 @@ function Expenses() {
                     formControlProps={{
                       fullWidth: true,
                     }}
-                    value={total}
                     inputProps={{
                       type: "number",
                       defaultValue: "",
-                      onChange: (event) => setTotal(event.target.value)
+                      onChange: (event) => setTotal(event.target.value),
+                      value: total
                     }}
                   />
                 </GridItem>
@@ -288,7 +254,11 @@ function Expenses() {
               </GridContainer>
               <GridContainer fullWidth justify="left">
                 <GridItem xs={12} sm={12} md={12}>
-                  <Button color="primary" className={classes.buttonAddMore} onClick={() => {}}>
+                  <Button
+                    color="primary"
+                    className={classes.buttonAddMore}
+                    onClick={() => {}}
+                  >
                     Add More
                   </Button>
                 </GridItem>
@@ -319,15 +289,14 @@ function Expenses() {
                     inputProps={{
                       type: "file",
                       defaultValue: "",
+                      value: attachment,
+                      onChange: (event) => setAttachment(event.target.value)
                     }}
-                    value={attachment}
-                    onChange={(event) => setAttachment(event.target.value)}
                   />
                   <FormHelperText>Attachment</FormHelperText>
                 </GridItem>
               </GridContainer>
-              <GridContainer>
-              </GridContainer>
+              <GridContainer></GridContainer>
               <br />
               <GridContainer fullWidth justify="left">
                 <GridItem xs={12} sm={12} md={2}>
@@ -336,7 +305,11 @@ function Expenses() {
                   </Button>
                 </GridItem>
                 <GridItem xs={12} sm={12} md={10}>
-                  <Button color="primary" className={classes.buttonRight} onClick={() => {}}>
+                  <Button
+                    color="primary"
+                    className={classes.buttonRight}
+                    onClick={() => {}}
+                  >
                     Add Expenses
                   </Button>
                 </GridItem>
@@ -354,8 +327,8 @@ const styles = () => ({
   },
   orLabel: {
     marginTop: 55,
-    float:"left",
-    marginRight: 15
+    float: "left",
+    marginRight: 15,
   },
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -392,13 +365,13 @@ const styles = () => ({
     },
   },
   buttonRight: {
-    float: 'right'
+    float: "right",
   },
   buttonAddMore: {
-    float: 'right',
+    float: "right",
     marginTop: 15,
-    marginBottom: 15  
-  }
+    marginBottom: 15,
+  },
 });
 
-export default Expenses;
+export default AddExpenses;

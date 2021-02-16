@@ -82,9 +82,9 @@ function Expenses() {
                     }}
                     inputProps={{
                       defaultValue: "",
-                      onChange: (event) => setNik(event.target.value)
+                      onChange: (event) => setNik(event.target.value),
+                      value: nik
                     }}
-                    value={nik}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
@@ -96,9 +96,9 @@ function Expenses() {
                     }}
                     inputProps={{
                       defaultValue: "",
-                      onChange: (event) => setNama(event.target.value)
+                      onChange: (event) => setNama(event.target.value),
+                      value: nama
                     }}
-                    value={nama}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
@@ -139,9 +139,9 @@ function Expenses() {
                     }}
                     inputProps={{
                       defaultValue: "",
-                      onChange: (event) => setTempatLahir(event.target.value)
+                      onChange: (event) => setTempatLahir(event.target.value),
+                      value: tempatLahir
                     }}
-                    value={tempatLahir}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
@@ -170,8 +170,8 @@ function Expenses() {
                     inputProps={{
                       defaultValue: "",
                       onChange: (event) => setAgama(event.target.value)
+                      value: agama
                     }}
-                    value={agama}
                   />
                 </GridItem>
               </GridContainer>
@@ -228,9 +228,9 @@ function Expenses() {
                     }}
                     inputProps={{
                       defaultValue: "",
-                      onChange: (event) => setPekerjaan(event.target.value)
+                      onChange: (event) => setPekerjaan(event.target.value),
+                      value: pekerjaan
                     }}
-                    value={pekerjaan}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4} >
@@ -242,9 +242,9 @@ function Expenses() {
                     }}
                     inputProps={{
                       defaultValue: "",
-                      onChange: (event) => setNpwp(event.target.value)
+                      onChange: (event) => setNpwp(event.target.value),
+                      value: npwp
                     }}
-                    value={npwp}
                   />
                 </GridItem>
               </GridContainer>
@@ -291,9 +291,9 @@ function Expenses() {
                     }}
                     inputProps={{
                       defaultValue: "",
-                      onChange: (event) => setNoRek(event.target.value)
+                      onChange: (event) => setNoRek(event.target.value),
+                      value: noRek
                     }}
-                    value={noRek}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
@@ -305,9 +305,9 @@ function Expenses() {
                     }}
                     inputProps={{
                       defaultValue: "",
-                      onChange: (event) => setNamaRek(event.target.value)
+                      onChange: (event) => setNamaRek(event.target.value),
+                      value: namaRek
                     }}
-                    value={namaRek}
                   />
                 </GridItem>
               </GridContainer>
@@ -374,9 +374,9 @@ function Expenses() {
                     inputProps={{
                       type: "file",
                       defaultValue: "",
-                      onChange: (event) => setFileScan(event.target.value)
+                      onChange: (event) => setFileScan(event.target.value),
+                      value: fileScan
                     }}
-                    value={fileScan}
                   />
                   <FormHelperText>File Scan</FormHelperText>
                 </GridItem>

@@ -1,43 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AddAlert from "@material-ui/icons/AddAlert";
-import CardHeader from "../../components/Card/CardHeader.js";
-import GridItem from "../../components/Grid/GridItem.js";
-import GridContainer from "../../components/Grid/GridContainer.js";
-import CustomInput from "../../components/CustomInput/CustomInput.js";
-import Button from "../../components/CustomButtons/Button.js";
-import Card from "../../components/Card/Card.js";
-import CardBody from "../../components/Card/CardBody.js";
-import Snackbar from "../../components/Snackbar/Snackbar.js";
-import { useHistory, useLocation } from "react-router-dom";
-import {
-  getComplaintProgress,
-  postComplaintVerivikasi,
-  getInqueryUnitKerja,
-  getDataCategory,
-  getListEscalationStatus,
-  postSubmitEskalasiTo,
-  getDataComplaintDetail,
-} from "../../config/Api/complaint";
-import { useStoreState } from "easy-peasy";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
+import CardHeader from "components/Card/CardHeader.js";
+import GridItem from "components/Grid/GridItem.js";
+import GridContainer from "components/Grid/GridContainer.js";
+import CustomInput from "components/CustomInput/CustomInput.js";
+import Button from "components/CustomButtons/Button.js";
+import Card from "components/Card/Card.js";
+import CardBody from "components/Card/CardBody.js";
+import Table from "components/Table/Table.js";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import Divider from "@material-ui/core/Divider";
-import { Save, ArrowBackOutlined } from "@material-ui/icons";
 import TextField from "@material-ui/core/TextField";
-import Checkbox from '@material-ui/core/Checkbox';
 
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-
-function MenuAssets() {
+function Assets() {
   const useStyles = makeStyles(styles);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -59,7 +39,7 @@ function MenuAssets() {
   const handleClose = () => {
     setOpen(false);
   };
-  
+
   return (
     <div>
       <GridContainer>
@@ -74,16 +54,33 @@ function MenuAssets() {
             <CardBody>
               <GridContainer justify="left">
                 <GridItem xs={12} sm={12} md={12}>
-                  <Button color="primary" className={classes.buttonRight} onClick={() => handleClickOpen()}>
+                  <Button
+                    color="primary"
+                    className={classes.buttonRight}
+                    onClick={() => handleClickOpen()}
+                  >
                     Add New Assets
                   </Button>
                 </GridItem>
               </GridContainer>
+              <Table
+                tableHeaderColor="primary"
+                tableHead={["No", "Code", "Name", "Image", "Actions"]}
+                tableData={[
+                  ["1", "61715-075", "China", "Tieba", "Action"],
+                  ["2", "61715-075", "China", "Tieba", "Action"],
+                ]}
+              />
             </CardBody>
           </Card>
         </GridItem>
       </GridContainer>
-      <Dialog open={open} onClose={handleClose} maxWidth={"md"} aria-labelledby="form-dialog-title">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        maxWidth={"md"}
+        aria-labelledby="form-dialog-title"
+      >
         <DialogTitle id="form-dialog-title">New Assets</DialogTitle>
         <DialogContent>
           <DialogContentText className={classes.labelDialog}>
@@ -99,9 +96,9 @@ function MenuAssets() {
                 }}
                 inputProps={{
                   defaultValue: "",
-                  onChange: (event) => setCode(event.target.value)
+                  onChange: (event) => setCode(event.target.value),
+                  value: code
                 }}
-                value={code}
               />
             </GridItem>
             <GridItem xs={12} sm={12} md={6}>
@@ -113,9 +110,9 @@ function MenuAssets() {
                 }}
                 inputProps={{
                   defaultValue: "",
-                  onChange: (event) => setName(event.target.value)
+                  onChange: (event) => setName(event.target.value),
+                  value: name
                 }}
-                value={name}
               />
             </GridItem>
           </GridContainer>
@@ -165,9 +162,9 @@ function MenuAssets() {
                   inputProps={{
                     defaultValue: "",
                     type: "number",
-                    onChange: (event) => setJumlah(event.target.value)
+                    onChange: (event) => setJumlah(event.target.value),
+                    value: jumlah
                   }}
-                  value={jumlah}
                 />
               </div>
             </GridItem>
@@ -201,9 +198,9 @@ function MenuAssets() {
                 inputProps={{
                   type: "file",
                   defaultValue: "",
-                  onChange: (event) => setAssets(event.target.value)
+                  onChange: (event) => setAssets(event.target.value),
+                  value: assets
                 }}
-                value={assets}
               />
             </GridItem>
           </GridContainer>
@@ -309,7 +306,7 @@ const styles = () => ({
     },
   },
   buttonRight: {
-    float: 'right'
+    float: "right",
   },
   cardTitleBlack: {
     color: "#000000",
@@ -320,20 +317,20 @@ const styles = () => ({
     textAlign: "left",
   },
   marginBottom: {
-    marginTop: 30
+    marginTop: 30,
   },
   labelDialog: {
-    width : 800,
-    marginTop : 20,
-    color: '#23457a',
-    fontWeight: '450'
+    width: 800,
+    marginTop: 20,
+    color: "#23457a",
+    fontWeight: "450",
   },
-  '@global': {
+  "@global": {
     // You should target [class*="MuiButton-root"] instead if you nest themes.
-    '.MuiFormControl-root': {
-      margin: 0
+    ".MuiFormControl-root": {
+      margin: 0,
     },
-  }
+  },
 });
 
-export default MenuAssets;
+export default Assets;

@@ -1,38 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AddAlert from "@material-ui/icons/AddAlert";
-import CardHeader from "../../components/Card/CardHeader.js";
-import GridItem from "../../components/Grid/GridItem.js";
-import GridContainer from "../../components/Grid/GridContainer.js";
-import CustomInput from "../../components/CustomInput/CustomInput.js";
-import Button from "../../components/CustomButtons/Button.js";
-import Card from "../../components/Card/Card.js";
-import CardBody from "../../components/Card/CardBody.js";
-import Snackbar from "../../components/Snackbar/Snackbar.js";
-import { useHistory, useLocation } from "react-router-dom";
-import {
-  getComplaintProgress,
-  postComplaintVerivikasi,
-  getInqueryUnitKerja,
-  getDataCategory,
-  getListEscalationStatus,
-  postSubmitEskalasiTo,
-  getDataComplaintDetail,
-} from "../../config/Api/complaint";
-import { useStoreState } from "easy-peasy";
+import CardHeader from "../../../components/Card/CardHeader.js";
+import GridItem from "../../../components/Grid/GridItem.js";
+import GridContainer from "../../../components/Grid/GridContainer.js";
+import CustomInput from "../../../components/CustomInput/CustomInput.js";
+import Button from "../../../components/CustomButtons/Button.js";
+import Card from "../../../components/Card/Card.js";
+import CardBody from "../../../components/Card/CardBody.js";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Divider from "@material-ui/core/Divider";
-import { Save, ArrowBackOutlined } from "@material-ui/icons";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
+import CustomTextField from "../../../components/CustomTextField/CustomTextField.js";
 
 function AddGoodsSale() {
   const useStyles = makeStyles(styles);
@@ -55,7 +37,7 @@ function AddGoodsSale() {
   const [total, setTotal] = React.useState("");
   const [advance, setAdvance] = React.useState("");
   const [balanceDue, setBalanceDue] = React.useState("");
-  
+
   return (
     <div>
       <GridContainer>
@@ -79,18 +61,15 @@ function AddGoodsSale() {
                     }}
                     inputProps={{
                       defaultValue: "",
-                      onChange: (event) => setTransactionNo(event.target.value)
+                      onChange: (event) => setTransactionNo(event.target.value),
+                      value: transactionNo
                     }}
-                    value={transactionNo}
                   />
                 </GridItem>
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                  <FormControl fullWidth={true}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Vendor
                     </InputLabel>
@@ -111,10 +90,7 @@ function AddGoodsSale() {
                   </FormControl>
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                  <FormControl fullWidth={true}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Customer
                     </InputLabel>
@@ -137,43 +113,38 @@ function AddGoodsSale() {
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
-                  <FormControl fullWidth>
-                    <TextField
-                      id="trans-date"
-                      label="Trans. Date"
-                      type="date"
-                      className={classes.textField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      className={classes.formControl}
-                      value={transDate}
-                      onChange={(event) => setTransDate(event.target.value)}
-                    />
-                  </FormControl>
+                  <CustomTextField
+                    labelText="Transaction Date"
+                    id="transaction-date"
+                    formControlProps={{
+                      fullWidth: true,
+                      className: classes.formControlDate,
+                    }}
+                    inputProps={{
+                      type: "date",
+                    }}
+                    value={transDate}
+                    onChange={(event) => setTransDate(event.target.value)}
+                  />
                 </GridItem>
-                
+
                 <GridItem xs={12} sm={12} md={6}>
-                  <FormControl fullWidth>
-                    <TextField
-                      id="due-date"
-                      label="Due Date"
-                      type="date"
-                      className={classes.textField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      className={classes.formControl}
-                      value={dueDate}
-                      onChange={(event) => setDueDate(event.target.value)}
-                    />
-                  </FormControl>
+                  <CustomTextField
+                    labelText="Due Date"
+                    id="due-date"
+                    formControlProps={{
+                      fullWidth: true,
+                      className: classes.formControlDate,
+                    }}
+                    inputProps={{
+                      type: "date",
+                    }}
+                    value={dueDate}
+                    onChange={(event) => setDueDate(event.target.value)}
+                  />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                  <FormControl fullWidth={true} className={classes.formControl}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Warehouse/Pabrik
                     </InputLabel>
@@ -202,18 +173,15 @@ function AddGoodsSale() {
                     }}
                     inputProps={{
                       defaultValue: "",
-                      onChange: (event) => setTerm(event.target.value)
+                      onChange: (event) => setTerm(event.target.value),
+                      value: term
                     }}
-                    value={term}
                   />
                 </GridItem>
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={2}>
-                  <FormControl
-                    fullWidth={true}
-                    className={classes.formControl}
-                  >
+                  <FormControl fullWidth={true} className={classes.formControl}>
                     <InputLabel id="demo-simple-select-helper-label">
                       Produk
                     </InputLabel>
@@ -243,9 +211,9 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
-                      onChange: (event) => setQty(event.target.value)
+                      onChange: (event) => setQty(event.target.value),
+                      value: qty
                     }}
-                    value={qty}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={1}>
@@ -258,9 +226,9 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
-                      onChange: (event) => setUnit(event.target.value)
+                      onChange: (event) => setUnit(event.target.value),
+                      value: unit
                     }}
-                    value={unit}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={1}>
@@ -273,9 +241,9 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
-                      onChange: (event) => setUnitPrice(event.target.value)
+                      onChange: (event) => setUnitPrice(event.target.value),
+                      value: unitPrice
                     }}
-                    value={unitPrice}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={1}>
@@ -288,9 +256,9 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
-                      onChange: (event) => setAmount(event.target.value)
+                      onChange: (event) => setAmount(event.target.value),
+                      value: amount
                     }}
-                    value={amount}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
@@ -310,14 +278,18 @@ function AddGoodsSale() {
               </GridContainer>
               <GridContainer fullWidth>
                 <GridItem xs={12} sm={12} md={12}>
-                  <Button color="primary" className={classes.buttonRight} onClick={() => {}}>
+                  <Button
+                    color="primary"
+                    className={classes.buttonRight}
+                    onClick={() => {}}
+                  >
                     Add More Data
                   </Button>
                 </GridItem>
               </GridContainer>
               <Divider className={classes.divider} />
               <GridContainer>
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={4}>
                   <FormControl fullWidth={true}>
                     <TextField
                       id="memo"
@@ -331,7 +303,7 @@ function AddGoodsSale() {
                     />
                   </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={3}>
+                <GridItem xs={12} sm={12} md={2}>
                   <CustomInput
                     labelText="Attachment"
                     id="attachment"
@@ -341,13 +313,13 @@ function AddGoodsSale() {
                     inputProps={{
                       type: "file",
                       defaultValue: "",
-                      onChange: (event) => setAttachment(event.target.value)
+                      onChange: (event) => setAttachment(event.target.value),
+                      value: attachment
                     }}
-                    value={attachment}
                   />
                   <FormHelperText>Attachment</FormHelperText>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
+                <GridItem xs={12} sm={12} md={2}>
                   <CustomInput
                     labelText="Balance Due"
                     id="balanceDue"
@@ -357,12 +329,12 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
-                      onChange: (event) => setBalanceDue(event.target.value)
+                      onChange: (event) => setBalanceDue(event.target.value),
+                      value: balanceDue
                     }}
-                    value={balanceDue}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
+                <GridItem xs={12} sm={12} md={2}>
                   <CustomInput
                     labelText="Total"
                     id="total"
@@ -372,12 +344,12 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
-                      onChange: (event) => setTotal(event.target.value)
+                      onChange: (event) => setTotal(event.target.value),
+                      value: total
                     }}
-                    value={total}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={1}>
+                <GridItem xs={12} sm={12} md={2}>
                   <CustomInput
                     labelText="Advance"
                     id="advance"
@@ -388,8 +360,8 @@ function AddGoodsSale() {
                       defaultValue: "",
                       type: "number",
                       onChange: (event) => setAdvance(event.target.value)
+                      value: advance
                     }}
-                    value={advance}
                   />
                 </GridItem>
               </GridContainer>
@@ -401,10 +373,18 @@ function AddGoodsSale() {
                   </Button>
                 </GridItem>
                 <GridItem xs={12} sm={12} md={10}>
-                  <Button color="primary" className={classes.buttonRight} onClick={() => {}}>
+                  <Button
+                    color="primary"
+                    className={classes.buttonRight}
+                    onClick={() => {}}
+                  >
                     Create Sale & Purchase
                   </Button>
-                  <Button color="primary" className={classes.buttonRight} onClick={() => {}}>
+                  <Button
+                    color="primary"
+                    className={classes.buttonRight}
+                    onClick={() => {}}
+                  >
                     Create Sale
                   </Button>
                 </GridItem>
@@ -417,8 +397,11 @@ function AddGoodsSale() {
   );
 }
 const styles = () => ({
+  formControlDate: {
+    marginTop: "20px",
+  },
   formControl: {
-    marginTop: "30px",
+    marginTop: "10px",
   },
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -455,11 +438,11 @@ const styles = () => ({
     },
   },
   buttonRight: {
-    float: 'right'
+    float: "right",
   },
   divider: {
-    marginTop: 15
-  }
+    marginTop: 15,
+  },
 });
 
 export default AddGoodsSale;
