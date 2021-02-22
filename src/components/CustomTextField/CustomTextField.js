@@ -9,7 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
-import styles from "assets/jss/material-dashboard-pro-react/components/customTextFieldStyle.js";
+import styles from "assets/jss/material-dashboard-react/components/customTextFieldStyle.js";
 
 const useStyles = makeStyles(styles);
 
