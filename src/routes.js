@@ -71,13 +71,13 @@ import PayMoney from "./views/CashBank/Transaction/PayMoney";
  * WAWAN
  * 
  */
-import AddCoopraSale from './views/Sales/AddCoopraSale';
-import AddCoopraContract from './views/Sales/AddCoopraContract';
-import AddGoodsSale from './views/Sales/AddGoodsSale';
-import Expenses from './views/Expenses/Expenses';
+import AddCoopraSale from './views/Sales/Copra/AddCoopraSale';
+import AddCoopraContract from './views/Sales/Copra/AddCoopraContract';
+import AddGoodsSale from './views/Sales/Goods/AddGoodsSale';
+import Expenses from './views/Expenses/AddExpenses';
 import AddContacts from './views/Contacts/AddContacts';
 import CashierTransaction from './views/CashierTransaction';
-import MenuAssets from './views/Assets/MenuAssets';
+import MenuAssets from './views/Assets';
 import ManagementUser from './views/ManagementUser';
 
 const dashboardRoutes = [

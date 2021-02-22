@@ -54,7 +54,143 @@ function Expenses() {
   const [contactType, setContactType] = React.useState("");
   const [AccountType, setAccountType] = React.useState("");
   const [fileScan, setFileScan] = React.useState("");
+  const [loadMore, setLoadMore] = React.useState([])
   
+  function append() {
+    setLoadMore([...loadMore, 
+    <>
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={4}>
+          <FormControl
+            fullWidth={true}
+            className={classes.formControl}
+          >
+            <InputLabel id="demo-simple-select-helper-label">
+              Nama Bank
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label"
+              id="demo-simple-select-helper"
+              value={namaBank}
+              onChange={(event) => setNamaBank(event.target.value)}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="1">
+                <em>BRI</em>
+              </MenuItem>
+              <MenuItem value="2">
+                <em>BCA</em>
+              </MenuItem>
+            </Select>
+            <FormHelperText>Pilih Nama Bank</FormHelperText>
+          </FormControl>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <CustomInput
+            labelText="Nomor Rekening"
+            id="nomorRekening"
+            formControlProps={{
+              fullWidth: true,
+            }}
+            inputProps={{
+              defaultValue: "",
+              onChange: (event) => setNoRek(event.target.value),
+              value: noRek
+            }}
+          />
+        </GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <CustomInput
+            labelText="Nama Rekening"
+            id="namaRekening"
+            formControlProps={{
+              fullWidth: true,
+            }}
+            inputProps={{
+              defaultValue: "",
+              onChange: (event) => setNamaRek(event.target.value),
+              value: namaRek
+            }}
+          />
+        </GridItem>
+      </GridContainer>
+      <GridContainer>
+        <GridItem xs={1} sm={1} md={1}>
+          <FormControl className={classes.formControl}>
+            <InputLabel>Contacts Type</InputLabel>
+          </FormControl>
+        </GridItem>
+        <GridItem xs={1} sm={1} md={1}>
+          <FormHelperText className={classes.formControl}>Customer</FormHelperText>
+          <Checkbox
+            value={"Customer"}
+            onChange={(event) => setContactType(event.target.value)}
+            inputProps={{ 'aria-label': 'primary checkbox' }}
+          />
+        </GridItem>
+        <GridItem xs={1} sm={1} md={1}>
+          <FormHelperText className={classes.formControl}>Vendor</FormHelperText>
+          <Checkbox
+            value={"Vendor"}
+            onChange={(event) => setContactType(event.target.value)}
+            inputProps={{ 'aria-label': 'primary checkbox' }}
+          />
+        </GridItem>
+        <GridItem xs={1} sm={1} md={1}>
+          <FormHelperText className={classes.formControl}>Employee</FormHelperText>
+          <Checkbox
+            value={"Employee"}
+            onChange={(event) => setContactType(event.target.value)}
+            inputProps={{ 'aria-label': 'primary checkbox' }}
+          />
+        </GridItem>
+
+        <GridItem xs={12} sm={12} md={1}>
+          <FormControl className={classes.formControl}>
+            <InputLabel>Account Type</InputLabel>
+          </FormControl>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={1}>
+          <FormHelperText className={classes.formControl}>Account Receivable</FormHelperText>
+          <Checkbox
+            value={"Account Receivable"}
+            onChange={(event) => setAccountType(event.target.value)}
+            inputProps={{ 'aria-label': 'primary checkbox' }}
+          />
+        </GridItem>
+        <GridItem xs={12} sm={12} md={1}>
+          <FormHelperText className={classes.formControl}>Account Payyable</FormHelperText>
+          <Checkbox
+            value={"Account Payyable"}
+            onChange={(event) => setAccountType(event.target.value)}
+            inputProps={{ 'aria-label': 'primary checkbox' }}
+          />
+        </GridItem>
+        <GridItem xs={12} sm={12} md={1}></GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <CustomInput
+            labelText="File Scan"
+            id="fileScan"
+            formControlProps={{
+              fullWidth: true,
+            }}
+            inputProps={{
+              type: "file",
+              defaultValue: "",
+              onChange: (event) => setFileScan(event.target.value),
+              value: fileScan
+            }}
+          />
+          <FormHelperText>File Scan</FormHelperText>
+        </GridItem>
+      </GridContainer>
+      <Divider className={classes.divider} />
+    </>
+    ])
+  }
+
   return (
     <div>
       <GridContainer>
@@ -169,7 +305,7 @@ function Expenses() {
                     }}
                     inputProps={{
                       defaultValue: "",
-                      onChange: (event) => setAgama(event.target.value)
+                      onChange: (event) => setAgama(event.target.value),
                       value: agama
                     }}
                   />
@@ -383,13 +519,14 @@ function Expenses() {
               </GridContainer>
               <GridContainer fullWidth>
                 <GridItem xs={12} sm={12} md={12}>
-                  <Button color="primary" className={classes.buttonRight} onClick={() => {}}>
+                  <Button color="primary" className={classes.buttonRight} onClick={() => append()}>
                     Add Bank Account
                   </Button>
                 </GridItem>
               </GridContainer>
               <br />
               <Divider />
+              {loadMore}
               <br />
               <GridContainer fullWidth justify="left">
                 <GridItem xs={12} sm={12} md={2}>
@@ -461,6 +598,10 @@ const styles = () => ({
   },
   marginBottom: {
     marginTop: 30
+  },
+  divider: {
+    marginTop: 20,
+    marginBottom: 20,
   }
 });
 

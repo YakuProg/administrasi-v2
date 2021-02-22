@@ -38,6 +38,112 @@ function AddGoodsSale() {
   const [advance, setAdvance] = React.useState("");
   const [balanceDue, setBalanceDue] = React.useState("");
 
+  const [loadMore, setLoadMore] = React.useState([])
+
+  function append() {
+    setLoadMore([...loadMore, 
+    <>
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={2}>
+          <FormControl fullWidth={true} className={classes.formControl}>
+            <InputLabel id="demo-simple-select-helper-label">
+              Produk
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label"
+              id="demo-simple-select-helper"
+              value={produk}
+              onChange={(event) => setProduk(event.target.value)}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="1">
+                <em>Produk A</em>
+              </MenuItem>
+            </Select>
+            <FormHelperText>Pilih Produk</FormHelperText>
+          </FormControl>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={1}>
+          <CustomInput
+            labelText="Qty"
+            id="qty"
+            formControlProps={{
+              fullWidth: true,
+            }}
+            inputProps={{
+              defaultValue: "",
+              type: "number",
+              onChange: (event) => setQty(event.target.value),
+              value: qty
+            }}
+          />
+        </GridItem>
+        <GridItem xs={12} sm={12} md={1}>
+          <CustomInput
+            labelText="Unit"
+            id="unit"
+            formControlProps={{
+              fullWidth: true,
+            }}
+            inputProps={{
+              defaultValue: "",
+              type: "number",
+              onChange: (event) => setUnit(event.target.value),
+              value: unit
+            }}
+          />
+        </GridItem>
+        <GridItem xs={12} sm={12} md={1}>
+          <CustomInput
+            labelText="Unit Price"
+            id="unitPrice"
+            formControlProps={{
+              fullWidth: true,
+            }}
+            inputProps={{
+              defaultValue: "",
+              type: "number",
+              onChange: (event) => setUnitPrice(event.target.value),
+              value: unitPrice
+            }}
+          />
+        </GridItem>
+        <GridItem xs={12} sm={12} md={1}>
+          <CustomInput
+            labelText="Amount"
+            id="amount"
+            formControlProps={{
+              fullWidth: true,
+            }}
+            inputProps={{
+              defaultValue: "",
+              type: "number",
+              onChange: (event) => setAmount(event.target.value),
+              value: amount
+            }}
+          />
+        </GridItem>
+        <GridItem xs={12} sm={12} md={6}>
+          <FormControl fullWidth={true}>
+            <TextField
+              id="description"
+              label="Description"
+              multiline
+              rows={5}
+              variant="outlined"
+              value={description}
+              onChange={(event) => setDescription(event.target.value)}
+              className={classes.formControl}
+            />
+          </FormControl>
+        </GridItem>
+      </GridContainer>
+      <Divider className={classes.divider} style={{marginTop: 20, marginBottom: 20}} />
+    </>])
+  }
+
   return (
     <div>
       <GridContainer>
@@ -281,13 +387,14 @@ function AddGoodsSale() {
                   <Button
                     color="primary"
                     className={classes.buttonRight}
-                    onClick={() => {}}
+                    onClick={() => append()}
                   >
                     Add More Data
                   </Button>
                 </GridItem>
               </GridContainer>
               <Divider className={classes.divider} />
+              {loadMore}
               <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <FormControl fullWidth={true}>
@@ -359,7 +466,7 @@ function AddGoodsSale() {
                     inputProps={{
                       defaultValue: "",
                       type: "number",
-                      onChange: (event) => setAdvance(event.target.value)
+                      onChange: (event) => setAdvance(event.target.value),
                       value: advance
                     }}
                   />
@@ -441,7 +548,8 @@ const styles = () => ({
     float: "right",
   },
   divider: {
-    marginTop: 15,
+    marginTop: 20,
+    marginBottom: 20,
   },
 });
 

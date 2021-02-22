@@ -32,6 +32,66 @@ function AddExpenses() {
   const [total, setTotal] = React.useState("");
   const [memo, setMemo] = React.useState("");
   const [attachment, setAttachment] = React.useState("");
+  const [loadMore, setLoadMore] = React.useState([])
+
+  function append() {
+    setLoadMore([...loadMore, 
+    <>
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={4}>
+          <FormControl fullWidth={true} className={classes.formControl}>
+            <InputLabel id="demo-simple-select-helper-label">
+              Category
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label"
+              id="demo-simple-select-helper"
+              value={category}
+              onChange={(event) => setCategory(event.target.value)}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="1">
+                <em>Category A</em>
+              </MenuItem>
+            </Select>
+            <FormHelperText>Pilih Category</FormHelperText>
+          </FormControl>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <CustomInput
+            labelText="Total"
+            id="total"
+            formControlProps={{
+              fullWidth: true,
+            }}
+            inputProps={{
+              type: "number",
+              defaultValue: "",
+              onChange: (event) => setTotal(event.target.value),
+              value: total
+            }}
+          />
+        </GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <FormControl fullWidth={true}>
+            <TextField
+              id="description"
+              label="Description"
+              multiline
+              rows={4}
+              variant="outlined"
+              value={description}
+              onChange={(event) => setDescription(event.target.value)}
+              className={classes.formControl}
+            />
+          </FormControl>
+        </GridItem>
+      </GridContainer>
+      <Divider className={classes.divider} />
+    </>])
+  }
 
   return (
     <div>
@@ -257,13 +317,14 @@ function AddExpenses() {
                   <Button
                     color="primary"
                     className={classes.buttonAddMore}
-                    onClick={() => {}}
+                    onClick={() => append()}
                   >
                     Add More
                   </Button>
                 </GridItem>
               </GridContainer>
               <Divider />
+              {loadMore}
               <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <FormControl fullWidth={true}>
@@ -370,7 +431,15 @@ const styles = () => ({
   buttonAddMore: {
     float: "right",
     marginTop: 15,
-    marginBottom: 15,
+  },
+  divider: {
+    marginBottom: 20,
+  },'@global': {
+    // You should target [class*="MuiButton-root"] instead if you nest themes.
+    '.MuiDivider-root': {
+      marginBottom: 20,
+      marginTop: 20
+    }
   },
 });
 
